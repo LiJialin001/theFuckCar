@@ -13,7 +13,7 @@ theta_pid = PID(p=0.001, i=0)
 #sensor.skip_frames(time = 500)
 clock = time.clock()
 
-THRESHOLD = (16, 38, 27, 50, 13, 42)
+THRESHOLD = (16, 38, 27, 50, 13, 42)  
 
 def output ():
     LED(1).on()
@@ -27,24 +27,24 @@ def output ():
     #sensor.skip_frames(time = 100)
 
     clock.tick()
-    img = sensor.snapshot().binary([THRESHOLD])
-    line = img.get_regression([(100,100)], robust = True)
-    if (line):
-        rho_err = abs(line.rho())-img.width()/2
-        if line.theta()>90:
-            theta_err = line.theta()-180
+    img = sensor.snapshot().binary([THRESHOLD])  
+    line = img.get_regression([(100,100)], robust = True)  # 找线
+    if (line):                                             # 如果找到线
+        rho_err = abs(line.rho())-img.width()/2            # 计算偏差
+        if line.theta()>90:                                # 如果线夹角大于90度
+            theta_err = line.theta()-180                   # 计算误差角度
         else:
-            theta_err = line.theta()
-        img.draw_line(line.line(), color = 127)
+            theta_err = line.theta()                       # 计算误差角度
+        img.draw_line(line.line(), color = 127)            # 在图像上画出线
         #print(rho_err,line.magnitude(),rho_err)
-        if line.magnitude()>8:
+        if line.magnitude()>8:                            # 如果线的长度大于8
             #if -40<b_err<40 and -30<t_err<30:
-            rho_output = rho_pid.get_pid(rho_err,1)
+            rho_output = rho_pid.get_pid(rho_err,1)         # 计算输出
             theta_output = theta_pid.get_pid(theta_err,1)
-            output = rho_output+theta_output
+            output = rho_output+theta_output             # 计算最终输出    rho_output+theta_output
         else:
-            output=100 #停车
+            output=100   #停车
     else:
-        output=200 #原地转
+        output=200   #原地转
     return output
     #print(clock.fps())
