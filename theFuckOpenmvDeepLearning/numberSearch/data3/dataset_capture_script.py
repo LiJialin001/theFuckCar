@@ -1,0 +1,28 @@
+# Dataset Capture Script - By: Yearner - 周一 11月 8 2021
+
+# Use this script to control how your OpenMV Cam captures images for your dataset.
+# You should apply the same image pre-processing steps you expect to run on images
+# that you will feed to your model during run-time.
+
+import sensor, image, time
+from  pyb import LED
+white = LED(4)
+sensor.reset()
+sensor.set_pixformat(sensor.RGB565) # Modify as you like.
+sensor.set_framesize(sensor.QVGA) # Modify as you like.
+sensor.skip_frames(time = 2000)
+sensor.set_auto_gain(False)  # must turn this off to prevent image washout...
+sensor.set_auto_whitebal(False)
+clock = time.clock()
+white.on()
+while(True):
+    clock.tick()
+    img = sensor.snapshot()
+    # Apply lens correction if you need it.
+    # img.lens_corr()
+    # Apply rotation correction if you need it.
+    # img.rotation_corr()
+    # Apply other filters...
+    # E.g. mean/median/mode/midpoint/etc.
+    print(clock.fps())
+   #(93 27 130 129)
