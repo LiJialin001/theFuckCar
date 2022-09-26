@@ -1,9 +1,10 @@
-import sensor, image, time
+import sensor, image, time, pyb 
 from image import SEARCH_EX, SEARCH_DS
-
+import led
 
 clock = time.clock()
 def SEARCH0 ():
+    led.led_blue.on()
     templates0 = ["/1.pgm", "/2.pgm", "/3.pgm","/4.pgm","/5.pgm","/6.pgm","/7.pgm","/8.pgm"]
     while (True):
         clock.tick()
@@ -20,6 +21,8 @@ def SEARCH0 ():
             if r:        #如果匹配成功
                 img.draw_rectangle(r)    
                 print(t)    #打印模板名字
+                print(count) #打印匹配的坐标
+                led.led_blue.off()
                 return count;
             count=count+1
         #print(clock.fps())
@@ -37,6 +40,7 @@ def tupian ():
     return templates
 
 def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是模板
+    led.led_red.on()
     img = sensor.snapshot()
     img = img.to_grayscale()
     y = templates[subject]
@@ -54,6 +58,7 @@ def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是�
             #elif r[0]==0:
                 #dir=0   #straight
     print(dire)
+    led.led_red.off()
     return dire
 
 

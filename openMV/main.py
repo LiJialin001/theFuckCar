@@ -1,6 +1,7 @@
 import sensor, image, time, search, crossflag,output,chuan
 from pid import PID
 from image import SEARCH_EX, SEARCH_DS
+import led
 
 #sensor.reset()
 #sensor.set_contrast(1)
@@ -19,9 +20,9 @@ rho_pid = PID(p=0.4, i=0)
 theta_pid = PID(p=0.001, i=0)
 THRESHOLD = (16, 38, 27, 50, 24, 42)  
 
-templates = search.tupian()   #加载模板图
+templates = search.tupian()   # 加载模板图
 
-clock = time.clock()    #初始化时钟
+clock = time.clock()    # 初始化时钟
 
 subject=search.SEARCH0()   # 初始化搜索 （第一次搜索，搜不到不进循环）
 
