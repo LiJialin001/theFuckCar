@@ -30,3 +30,4 @@
 .\motr.o: .\Lib\inc\stm32f10x_usart.h
 .\motr.o: .\Lib\inc\stm32f10x_wwdg.h
 .\motr.o: .\Lib\inc\misc.h
+.\motr.o: .\Hardware\RECEIVE\receive_port.h

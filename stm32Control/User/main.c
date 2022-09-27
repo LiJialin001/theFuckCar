@@ -11,6 +11,7 @@
 #include "delay.h"
 #include "hcsr.h"
 #include "motr.h"
+#include "receive_port.h"
 
 
 #define FEEL GPIOA
@@ -58,7 +59,7 @@ int main (void){
 	RCC_Configuration(); // ±÷”…Ë÷√
 	Wheel_init();
 	Led_init();
-	
+	uart1_Init();
 	GND_init();
 	
 	GPIO_WriteBit(FEELPower, Led1, (BitAction)(1)); 
@@ -68,7 +69,9 @@ int main (void){
 	TIM4_PWM_Init(9999,2); 
 
 	while(1){
-			Move_on(5600, 5400);
+		USART1_IRQHandler();
+    USART1_IRQHandler_dire();		
+		Move_on();
 	}
 }
 

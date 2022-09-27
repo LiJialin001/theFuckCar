@@ -10,13 +10,13 @@ void Wheel_init(void) {    //wheel的接口初始化
 }
 
 //小车行进，PID由openmv调控
-void Move_on(u16 left, u16 right) {
+void Move_on() {
 	GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1)); 
 	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(1)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(0)); 
-	TIM_SetCompare3(TIM3,left); 
-	TIM_SetCompare3(TIM4,right); 
+	TIM_SetCompare3(TIM3,out*50); 
+	TIM_SetCompare3(TIM4,out*50); 
 }
 
 
@@ -93,3 +93,4 @@ void TIM4_PWM_Init(u16 arr,u16 psc){  //TIM3 PWM初始化 arr重装载值 psc预分频系数
     TIM_Cmd(TIM4,ENABLE);        //使能TIM3
 		
 }
+

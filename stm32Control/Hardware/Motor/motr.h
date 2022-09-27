@@ -3,7 +3,7 @@
 
 #include "sys.h"
 #include "stm32f10x.h"
-
+#include "receive_port.h"
 
 #define WHEEL GPIOB
 #define Wheel_1 GPIO_Pin_0
@@ -15,7 +15,7 @@
 
 
 void Wheel_init(void);
-void Move_on(u16 left, u16 right);
+void Move_on(void);
 void TIM3_PWM_Init(u16 arr,u16 psc);
 void TIM4_PWM_Init(u16 arr,u16 psc);
 

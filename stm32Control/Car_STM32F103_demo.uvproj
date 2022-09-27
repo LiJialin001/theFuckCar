@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED;.\Hardware\Motor</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED;.\Hardware\Motor;.\Hardware\RECEIVE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -512,6 +512,11 @@
               <FileName>motr.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Motor\motr.c</FilePath>
+            </File>
+            <File>
+              <FileName>receive_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\RECEIVE\receive_port.c</FilePath>
             </File>
           </Files>
         </Group>
