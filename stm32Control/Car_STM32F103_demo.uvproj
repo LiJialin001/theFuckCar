@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED;.\Hardware\Motor</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -507,6 +507,11 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\OLED\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>motr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Motor\motr.c</FilePath>
             </File>
           </Files>
         </Group>

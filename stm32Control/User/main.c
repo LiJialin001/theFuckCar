@@ -56,12 +56,8 @@ int main (void){
 	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	RCC_Configuration(); //时钟设置
-	ADC_Configuration(); //ADC初始化设置
 	Wheel_init();
-	Hcsr_Init();
 	Led_init();
-	FEELPower_init();
-	SpeedPower_init();
 	
 	GND_init();
 	
