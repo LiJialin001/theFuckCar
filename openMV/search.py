@@ -40,7 +40,6 @@ def tupian ():
     return templates
 
 def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是模板
-    led.led_red.on()
     img = sensor.snapshot()
     img = img.to_grayscale()
     y = templates[subject]
@@ -55,7 +54,6 @@ def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是�
                 dire=1       #left
             elif 120<r[0]<160:
                 dire=2       #right
-    led.led_red.off()
     return dire
 
 

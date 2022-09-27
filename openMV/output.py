@@ -16,9 +16,9 @@ clock = time.clock()
 THRESHOLD = (16, 38, 27, 50, 13, 42)  
 
 def output ():
-    LED(1).on()
-    LED(2).on()
-    LED(3).on()
+    # LED(1).on()
+    # LED(2).on()
+    # LED(3).on() 
     #sensor.reset()
     #sensor.set_vflip(True)
     #sensor.set_hmirror(True)

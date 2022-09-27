@@ -34,25 +34,29 @@ out=100   #初始速度
 while(True):
     out=output.output()
     if crossflag.CROSSFLAG1():   # 是否是交叉口
+        led.led_red.on()   # 红灯亮
+        led.led_green.on()   # 绿灯亮
+        led.led_blue.on()   # 蓝灯亮
         out=0                  # 停车
         chuan.chuan_output(out)   # 传输输出
-        for i in range(1,11):  
+        for i in range(1,11):         # 亮黄灯
+            led.led_blue.off()   # 蓝灯灭 
             chuan.chuan_output(out)   # 输出置0
             dire=search.SEARCHX(subject,templates)   # 搜索是否有模板图
             print('转向dire = ', dire)
             chuan.chuan_output(out+50)  # 向前走一些
             if dire != 0 :     # 如果不是直走则如跳出循环
                 break
-        if dire==0:     # 如果是直走(没有检测到模板图)
-            led.led_green.on()   # 绿灯亮
+        if dire==0:     # 如果是直走(没有检测到模板图)    亮红灯
+            led.led_green.off()   # 绿灯灭
             chuan.chuan_dir(dire,flag)   # 传输方向
             while(crossflag.CROSSFLAG2()):   # 如果还是交叉口
                 out=0    
                 chuan.chuan_output(out+50)  
             out=output.output()
             chuan.chuan_output(out+50)
-            led.led_green.off()   # 绿灯灭
-        else :          # 如果不是直走（说明检测到了模版图）
+        else :                              # 如果不是直走（说明检测到了模版图）  亮绿灯
+            led.led_red.off()   # 红灯灭
             while(crossflag.CROSSFLAG2()):    # 如果还是交叉口，继续加速转
                 chuan.chuan_output(out+50)    
             out=100
@@ -63,5 +67,3 @@ while(True):
             flag=0
     out=output.output()
     chuan.chuan_output(out+50)
-    print(clock.fps())
-
