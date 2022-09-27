@@ -20,8 +20,8 @@ def SEARCH0 ():
         #  roi的大小要比模板图片大，比frambuffer小
             if r:        #如果匹配成功
                 img.draw_rectangle(r)    
-                print(t)    #打印模板名字
-                print(count) #打印匹配的坐标
+                print('模板名字',t)   
+                print('匹配的坐标',count) 
                 led.led_blue.off()
                 return count;
             count=count+1
@@ -55,9 +55,6 @@ def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是�
                 dire=1       #left
             elif 120<r[0]<160:
                 dire=2       #right
-            #elif r[0]==0:
-                #dir=0   #straight
-    print(dire)
     led.led_red.off()
     return dire
 

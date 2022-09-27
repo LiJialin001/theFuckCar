@@ -17,6 +17,8 @@ def chuan_output(X):
     X=int(X)
     data = bytearray([0xb3,0xb3,X,0x5b,0x5b])
     uart.write(data)
+    print("output:",X)
+    print('output_data:', data)
 
 
 def chuan_dir(d,flag):   #d为方向，flag为十字路口标志
@@ -25,3 +27,6 @@ def chuan_dir(d,flag):   #d为方向，flag为十字路口标志
     flag=int(flag)
     data = bytearray([0xb3,0xb3,d,flag,0x4b])   
     uart.write(data)
+    print("dir:",d)
+    print("flag:",flag)
+    print('dir_data:', data)

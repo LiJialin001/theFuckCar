@@ -28,25 +28,32 @@ subject=search.SEARCH0()   # 初始化搜索 （第一次搜索，搜不到不�
 
 flag=0
 out=100   #初始速度
+
+#以下过程正常直走，遇到路口停车查模版，无模版时直走绿灯亮，有模版时搜索红灯亮
+
 while(True):
     out=output.output()
     if crossflag.CROSSFLAG1():   # 是否是交叉口
-        out=100  
+        out=0                  # 停车
         chuan.chuan_output(out)   # 传输输出
-        for i in range(1,11):   
-            dire=search.SEARCHX(subject,templates)   # 搜索
-            chuan.chuan_output(out+50)  # 传输输出
+        for i in range(1,11):  
+            chuan.chuan_output(out)   # 输出置0
+            dire=search.SEARCHX(subject,templates)   # 搜索是否有模板图
+            print('转向dire = ', dire)
+            chuan.chuan_output(out+50)  # 向前走一些
             if dire != 0 :     # 如果不是直走则如跳出循环
                 break
-        if dire==0:     # 如果是直走
+        if dire==0:     # 如果是直走(没有检测到模板图)
+            led.led_green.on()   # 绿灯亮
             chuan.chuan_dir(dire,flag)   # 传输方向
             while(crossflag.CROSSFLAG2()):   # 如果还是交叉口
-                out=0    # 停车
+                out=0    
                 chuan.chuan_output(out+50)  
             out=output.output()
             chuan.chuan_output(out+50)
-        else :        # 如果不是直走
-            while(crossflag.CROSSFLAG2()):    # 如果还是交叉口，继续转
+            led.led_green.off()   # 绿灯灭
+        else :          # 如果不是直走（说明检测到了模版图）
+            while(crossflag.CROSSFLAG2()):    # 如果还是交叉口，继续加速转
                 chuan.chuan_output(out+50)    
             out=100
             chuan.chuan_output(out)
@@ -56,6 +63,5 @@ while(True):
             flag=0
     out=output.output()
     chuan.chuan_output(out+50)
-    print(out+50)
-    #print(clock.fps())
+    print(clock.fps())
 

@@ -37,11 +37,11 @@ def output ():
             theta_err = line.theta()                       # 计算误差角度
         img.draw_line(line.line(), color = 127)            # 在图像上画出线
         #print(rho_err,line.magnitude(),rho_err)
-        if line.magnitude()>8:                            # 如果线的长度大于8
+        if line.magnitude()>8:                             # 如果线的长度大于8
             #if -40<b_err<40 and -30<t_err<30:
             rho_output = rho_pid.get_pid(rho_err,1)         # 计算输出
             theta_output = theta_pid.get_pid(theta_err,1)
-            output = rho_output+theta_output             # 计算最终输出    rho_output+theta_output
+            output = rho_output+theta_output               # 计算最终输出    rho_output+theta_output
         else:
             output=100   #停车
     else:
