@@ -3,7 +3,7 @@
 .\oled.o: .\Basic\sys\sys.h
 .\oled.o: .\CMSIS\stm32f10x.h
 .\oled.o: .\CMSIS\core_cm3.h
-.\oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\oled.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\oled.o: .\CMSIS\system_stm32f10x.h
 .\oled.o: .\User\stm32f10x_conf.h
 .\oled.o: .\Lib\inc\stm32f10x_adc.h

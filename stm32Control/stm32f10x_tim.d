@@ -2,7 +2,7 @@
 .\stm32f10x_tim.o: .\Lib\inc\stm32f10x_tim.h
 .\stm32f10x_tim.o: .\CMSIS\stm32f10x.h
 .\stm32f10x_tim.o: .\CMSIS\core_cm3.h
-.\stm32f10x_tim.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\stm32f10x_tim.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\stm32f10x_tim.o: .\CMSIS\system_stm32f10x.h
 .\stm32f10x_tim.o: .\User\stm32f10x_conf.h
 .\stm32f10x_tim.o: .\Lib\inc\stm32f10x_adc.h

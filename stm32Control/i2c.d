@@ -3,7 +3,7 @@
 .\i2c.o: .\Basic\sys\sys.h
 .\i2c.o: .\CMSIS\stm32f10x.h
 .\i2c.o: .\CMSIS\core_cm3.h
-.\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\i2c.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\i2c.o: .\CMSIS\system_stm32f10x.h
 .\i2c.o: .\User\stm32f10x_conf.h
 .\i2c.o: .\Lib\inc\stm32f10x_adc.h

@@ -2,7 +2,7 @@
 .\sys.o: Basic\sys\sys.h
 .\sys.o: .\CMSIS\stm32f10x.h
 .\sys.o: .\CMSIS\core_cm3.h
-.\sys.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\sys.o: .\CMSIS\system_stm32f10x.h
 .\sys.o: .\User\stm32f10x_conf.h
 .\sys.o: .\Lib\inc\stm32f10x_adc.h

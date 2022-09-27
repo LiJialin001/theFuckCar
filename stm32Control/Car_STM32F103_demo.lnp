@@ -21,6 +21,7 @@
 ".\i2c.o"
 ".\hcsr.o"
 ".\oled.o"
+".\motr.o"
 --strict --scatter ".\Car_STM32F103_demo.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

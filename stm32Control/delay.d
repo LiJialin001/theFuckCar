@@ -3,7 +3,7 @@
 .\delay.o: .\Basic\sys\sys.h
 .\delay.o: .\CMSIS\stm32f10x.h
 .\delay.o: .\CMSIS\core_cm3.h
-.\delay.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\delay.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\delay.o: .\CMSIS\system_stm32f10x.h
 .\delay.o: .\User\stm32f10x_conf.h
 .\delay.o: .\Lib\inc\stm32f10x_adc.h

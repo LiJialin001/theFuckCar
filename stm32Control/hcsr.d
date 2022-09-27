@@ -3,7 +3,7 @@
 .\hcsr.o: .\Basic\sys\sys.h
 .\hcsr.o: .\CMSIS\stm32f10x.h
 .\hcsr.o: .\CMSIS\core_cm3.h
-.\hcsr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\hcsr.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\hcsr.o: .\CMSIS\system_stm32f10x.h
 .\hcsr.o: .\User\stm32f10x_conf.h
 .\hcsr.o: .\Lib\inc\stm32f10x_adc.h
