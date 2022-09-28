@@ -1,6 +1,6 @@
 import sensor, image, time, pyb 
 from image import SEARCH_EX, SEARCH_DS
-import led
+import led, chuan
 
 clock = time.clock()
 def SEARCH0 ():
@@ -23,6 +23,7 @@ def SEARCH0 ():
                 print('模板名字',t)   
                 print('匹配的坐标',count) 
                 led.led_blue.off()
+                chuan.chuan_count(count)
                 return count;
             count=count+1
         #print(clock.fps())

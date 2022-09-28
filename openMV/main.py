@@ -26,9 +26,6 @@ clock = time.clock()    # 初始化时钟
 
 subject=search.SEARCH0()   # 初始化搜索 （第一次搜索，搜不到不进循环）
 
-chuan.chuan_count(subject)
-
-
 flag=0
 out=100   #初始速度
 
@@ -55,13 +52,13 @@ while(True):
             chuan.chuan_dir(dire,flag)   # 传输方向
             while(crossflag.CROSSFLAG2()):   # 如果还是交叉口
                 out=0
-                chuan.chuan_output(out+50)
+                chuan.chuan_output(out+50)  # 向前走一些
             out=output.output()
-            chuan.chuan_output(out+50)
+            chuan.chuan_output(out)
         else :                              # 如果不是直走（说明检测到了模版图）  亮绿灯
             led.led_red.off()   # 红灯灭
             while(crossflag.CROSSFLAG2()):    # 如果还是交叉口，继续加速转
-                chuan.chuan_output(out+50)
+                chuan.chuan_output(out)
             out=100
             chuan.chuan_output(out)
             flag=1
@@ -69,4 +66,4 @@ while(True):
             #time.sleep(0.5)
             flag=0
     out=output.output()
-    chuan.chuan_output(out+50)
+    chuan.chuan_output(out)

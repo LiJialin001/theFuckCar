@@ -1,7 +1,7 @@
 import sensor, image, time
 import led 
 
-Center_ROI = (0, 0, 160, 120)    # 设置ROI区域
+Center_ROI = (0, 0, 160, 10)    # 设置ROI区域
 Down_ROI = (0, 110, 160, 10)    # 设置ROI区域
 
 
@@ -9,6 +9,7 @@ def CROSSFLAG1 ():  # 判断是否为十字路口
     clock = time.clock()
     clock.tick()
     img = sensor.snapshot()
+    img.draw_rectangle(Center_ROI)
     statistics = img.get_statistics(roi = Center_ROI)# 统计图像中的颜色，roi为统计区域，roi需要具体调整
     if 0<statistics.l_mode()<100 and 0<statistics.a_mode()<120 and 0<statistics.b_mode()<120:   # 判断是否为红色
         print("stop")
@@ -19,7 +20,8 @@ def CROSSFLAG1 ():  # 判断是否为十字路口
 def CROSSFLAG2 ():    # 判断是否为十字路口
     clock = time.clock()
     clock.tick()  
-    img = sensor.snapshot()
+    img = sensor.snapshot()  
+    img.draw_rectangle(Down_ROI)
     statistics = img.get_statistics(roi = Down_ROI)
     if 0<statistics.l_mode()<100 and 0<statistics.a_mode()<120 and 0<statistics.b_mode()<120:
         return 0
