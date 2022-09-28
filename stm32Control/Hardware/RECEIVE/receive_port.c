@@ -197,3 +197,81 @@ void USART1_IRQHandler_dire(void)
 		}
 		
 }
+
+void USART1_IRQHandler_count(void)			 
+{
+		u8 com_data; 
+		u8 i;
+		static u8 RxCounter1=0;
+		static u16 RxBuffer1[10]={0};
+		static u8 RxState = 0;	
+		static u8 RxFlag1 = 0;
+
+		if( USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)  	   //接收中断
+		{
+				USART_ClearITPendingBit(USART1,USART_IT_RXNE);   //清除中断标志
+				com_data = USART_ReceiveData(USART1);						 //接收串口1数据
+			
+				if(RxState==0&&com_data==0x55)  //0xb3帧头开始接收
+				{
+					RxState=1;
+					RxBuffer1[RxCounter1++]=com_data;
+				}
+		
+				else if(RxState==1&&com_data==0x55)  //0xb3帧头
+				{
+					RxState=2;
+					RxBuffer1[RxCounter1++]=com_data;
+				}
+		
+				else if(RxState==2)
+				{
+					RxBuffer1[RxCounter1++]=com_data;
+
+					if(RxCounter1>=10||com_data == 0x2B)       //RxBuffer1存满，或接收结束即收到停止位
+					{
+						RxState=3;
+						RxFlag1=1;
+						data=RxBuffer1[RxCounter1-2];		
+					}
+				}
+		
+				else if(RxState==3)		//检测是否收到结束标志
+				{
+						if(RxBuffer1[RxCounter1-1] == 0x2B)
+						{
+									USART_ITConfig(USART1,USART_IT_RXNE,DISABLE);//关闭中断
+									if(RxFlag1)
+									{
+										out = data;
+									}
+									RxFlag1 = 0;
+									RxCounter1 = 0;
+									RxState = 0;
+									USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);  //开中断
+						}
+						else   //没收到截止位即接收错误
+						{
+									RxState = 0;
+									RxCounter1=0;
+									for(i=0;i<10;i++)
+									{
+											RxBuffer1[i]=0x00;      //清零
+									}
+						}
+				} 
+	
+				else   //异常
+				{
+						RxState = 0;
+						RxCounter1=0;
+						for(i=0;i<10;i++)
+						{
+								RxBuffer1[i]=0x00;    
+						}
+				}
+
+		}
+		
+}
+

@@ -16,15 +16,18 @@ sensor.set_pixformat(sensor.RGB565)
 sensor.set_framesize(sensor.QQVGA)
 sensor.skip_frames(time = 1000)
 
-rho_pid = PID(p=0.4, i=0)   
+rho_pid = PID(p=0.4, i=0)
 theta_pid = PID(p=0.001, i=0)
-THRESHOLD = (16, 38, 27, 50, 24, 42)  
+THRESHOLD = (16, 38, 27, 50, 24, 42)
 
 templates = search.tupian()   # 加载模板图
 
 clock = time.clock()    # 初始化时钟
 
 subject=search.SEARCH0()   # 初始化搜索 （第一次搜索，搜不到不进循环）
+
+chuan.chuan_count(subject)
+
 
 flag=0
 out=100   #初始速度
@@ -40,7 +43,7 @@ while(True):
         out=0                  # 停车
         chuan.chuan_output(out)   # 传输输出
         for i in range(1,11):         # 亮黄灯
-            led.led_blue.off()   # 蓝灯灭 
+            led.led_blue.off()   # 蓝灯灭
             chuan.chuan_output(out)   # 输出置0
             dire=search.SEARCHX(subject,templates)   # 搜索是否有模板图
             print('转向dire = ', dire)
@@ -51,17 +54,17 @@ while(True):
             led.led_green.off()   # 绿灯灭
             chuan.chuan_dir(dire,flag)   # 传输方向
             while(crossflag.CROSSFLAG2()):   # 如果还是交叉口
-                out=0    
-                chuan.chuan_output(out+50)  
+                out=0
+                chuan.chuan_output(out+50)
             out=output.output()
             chuan.chuan_output(out+50)
         else :                              # 如果不是直走（说明检测到了模版图）  亮绿灯
             led.led_red.off()   # 红灯灭
             while(crossflag.CROSSFLAG2()):    # 如果还是交叉口，继续加速转
-                chuan.chuan_output(out+50)    
+                chuan.chuan_output(out+50)
             out=100
             chuan.chuan_output(out)
-            flag=1     
+            flag=1
             chuan.chuan_dir(dire,flag)  # 传输方向
             #time.sleep(0.5)
             flag=0

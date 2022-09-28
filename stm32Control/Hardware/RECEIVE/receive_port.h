@@ -14,5 +14,6 @@ extern u16 flag;
 void uart1_Init(void);
 void USART1_IRQHandler(void);	
 void USART1_IRQHandler_dire(void);	
+void USART1_IRQHandler_count(void);
 
 #endif
