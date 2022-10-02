@@ -4,10 +4,13 @@
 
 #define DataGPIO GPIOA
 #define Data GPIO_Pin_10
+#define Dataout GPIO_Pin_9
 
 extern u16 data;
+extern u16 data1;
 extern u16 data2;
 extern u16 out;
+extern u16 sig;
 extern u16 dire;
 extern u16 flag;
 

@@ -1,5 +1,7 @@
 #include "motr.h"
 
+u16 out0=2500;
+
 void Wheel_init(void) {    //wheel的接口初始化
 	GPIO_InitTypeDef  GPIO_InitStructure; //定义GPIO的初始化枚举结构		
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       
@@ -11,14 +13,22 @@ void Wheel_init(void) {    //wheel的接口初始化
 
 //小车行进，PID由openmv调控
 void Move_on() {
-	GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1)); 
-	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(1)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(0)); 
-	TIM_SetCompare3(TIM3,out*50); 
-	TIM_SetCompare3(TIM4,out*50); 
+	GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(0));   //right
+	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(1)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
+	TIM_SetCompare3(TIM3,out0-out*30); //right
+	TIM_SetCompare3(TIM4,out0+out*30); //left
 }
 
+//s16 myabs( s16 out)
+//{
+//  if (out<0)
+//	{
+//		out=-out;
+//	}
+//	return out;
+//}
 
 void TIM3_PWM_Init(u16 arr,u16 psc){  //TIM3 PWM初始化 arr重装载值 psc预分频系数
     GPIO_InitTypeDef     GPIO_InitStrue;

@@ -1,8 +1,10 @@
 #include "receive_port.h"
 
 u16 data;
+u16 data1;
 u16 data2;
 u16 out;
+u16 sig;
 u16 dire;
 u16 flag;
 
@@ -74,7 +76,8 @@ void USART1_IRQHandler(void)
 					{
 						RxState=3;
 						RxFlag1=1;
-						data=RxBuffer1[RxCounter1-2];		
+						data=RxBuffer1[RxCounter1-2];	
+            data1=RxBuffer1[RxCounter1-3];						
 					}
 				}
 		
@@ -85,7 +88,7 @@ void USART1_IRQHandler(void)
 									USART_ITConfig(USART1,USART_IT_RXNE,DISABLE);//πÿ±’÷–∂œ
 									if(RxFlag1)
 									{
-										out = data;
+										out = data1*(data-1);
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;

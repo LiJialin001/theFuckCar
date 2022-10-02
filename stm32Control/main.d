@@ -30,6 +30,5 @@
 .\main.o: .\Lib\inc\misc.h
 .\main.o: .\Basic\sys\sys.h
 .\main.o: .\Basic\delay\delay.h
-.\main.o: .\Hardware\HCSR\hcsr.h
 .\main.o: .\Hardware\Motor\motr.h
 .\main.o: .\Hardware\RECEIVE\receive_port.h
