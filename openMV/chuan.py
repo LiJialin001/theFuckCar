@@ -1,3 +1,4 @@
+from re import S
 import sensor, image, time
 from pyb import UART
 import json
@@ -9,13 +10,17 @@ clock = time.clock() # Tracks FPS.
 uart = UART(3, 115200)   #串口3，波特率115200
 uart.init(115200, bits=8, parity=None, stop=1)  #8位数据位，无校验位，1位停止位
 
-def chuan_output(X):
+def chuan_output(Sig, X):
     clock.tick() # Track elapsed milliseconds between snapshots().
     X=int(X)
-    data = bytearray([0xb3,0xb3,X,0x5b,0x5b])
+    if X > 0:
+        Sig = 2
+    elif X < 0:
+        Sig = 0
+    X=abs(X)
+    data = bytearray([0xb3,0xb3,Sig,X,0x5b,0x5b])
     uart.write(data)
     print("output:",X)
-    print('output_data:', data)
 
 
 def chuan_dir(d,flag):   #d为方向，flag为十字路口标志
