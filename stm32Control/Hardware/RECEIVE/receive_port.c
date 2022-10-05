@@ -89,6 +89,7 @@ void USART1_IRQHandler(void)
 									if(RxFlag1)
 									{
 										out = data1*(data-1);
+										sig = (data-1)*(data-1);
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;

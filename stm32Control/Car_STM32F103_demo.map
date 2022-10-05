@@ -31,6 +31,7 @@ Section Cross References
     main.o(.text) refers to sys.o(.text) for RCC_Configuration
     main.o(.text) refers to motr.o(.text) for Wheel_init
     main.o(.text) refers to receive_port.o(.text) for uart1_Init
+    main.o(.text) refers to receive_port.o(.data) for dire
     sys.o(.text) refers to misc.o(.text) for NVIC_PriorityGroupConfig
     sys.o(.text) refers to stm32f10x_rcc.o(.text) for RCC_DeInit
     sys.o(.text) refers to stm32f10x_flash.o(.text) for FLASH_SetLatency
@@ -51,8 +52,8 @@ Section Cross References
     motr.o(.text) refers to stm32f10x_rcc.o(.text) for RCC_APB2PeriphClockCmd
     motr.o(.text) refers to stm32f10x_gpio.o(.text) for GPIO_Init
     motr.o(.text) refers to stm32f10x_tim.o(.text) for TIM_SetCompare3
-    motr.o(.text) refers to receive_port.o(.data) for out
     motr.o(.text) refers to motr.o(.data) for out0
+    motr.o(.text) refers to receive_port.o(.data) for sig
     receive_port.o(.text) refers to stm32f10x_rcc.o(.text) for RCC_APB1PeriphClockCmd
     receive_port.o(.text) refers to stm32f10x_gpio.o(.text) for GPIO_Init
     receive_port.o(.text) refers to misc.o(.text) for NVIC_Init
@@ -336,25 +337,25 @@ Image Symbol Table
     TI1_Config                               0x08001b6b   Thumb Code   108  stm32f10x_tim.o(.text)
     .text                                    0x08002324   Section       64  startup_stm32f10x_md.o(.text)
     .text                                    0x08002364   Section        0  main.o(.text)
-    .text                                    0x080023a0   Section        0  stm32f10x_it.o(.text)
-    .text                                    0x080023ba   Section        0  delay.o(.text)
-    .text                                    0x0800241c   Section        0  sys.o(.text)
-    .text                                    0x08002498   Section        0  hcsr.o(.text)
-    .text                                    0x080025d4   Section        0  motr.o(.text)
-    .text                                    0x08002778   Section        0  receive_port.o(.text)
-    .text                                    0x08002c5c   Section        0  heapauxi.o(.text)
-    .text                                    0x08002c62   Section       74  sys_stackheap_outer.o(.text)
-    .text                                    0x08002cac   Section        0  exit.o(.text)
-    .text                                    0x08002cc0   Section        8  libspace.o(.text)
-    .text                                    0x08002cc8   Section        0  sys_exit.o(.text)
-    .text                                    0x08002cd4   Section        2  use_no_semi.o(.text)
-    .text                                    0x08002cd6   Section        0  indicate_semi.o(.text)
-    x$fpl$fdiv                               0x08002cd8   Section      388  fdiv.o(x$fpl$fdiv)
-    _fdiv1                                   0x08002cd9   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    x$fpl$fflt                               0x08002e5c   Section       48  fflt_clz.o(x$fpl$fflt)
-    x$fpl$fnaninf                            0x08002e8c   Section      140  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fretinf                            0x08002f18   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$usenofp                            0x08002f22   Section        0  usenofp.o(x$fpl$usenofp)
+    .text                                    0x080023c4   Section        0  stm32f10x_it.o(.text)
+    .text                                    0x080023de   Section        0  delay.o(.text)
+    .text                                    0x08002440   Section        0  sys.o(.text)
+    .text                                    0x080024bc   Section        0  hcsr.o(.text)
+    .text                                    0x080025f8   Section        0  motr.o(.text)
+    .text                                    0x08002884   Section        0  receive_port.o(.text)
+    .text                                    0x08002d80   Section        0  heapauxi.o(.text)
+    .text                                    0x08002d86   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x08002dd0   Section        0  exit.o(.text)
+    .text                                    0x08002de4   Section        8  libspace.o(.text)
+    .text                                    0x08002dec   Section        0  sys_exit.o(.text)
+    .text                                    0x08002df8   Section        2  use_no_semi.o(.text)
+    .text                                    0x08002dfa   Section        0  indicate_semi.o(.text)
+    x$fpl$fdiv                               0x08002dfc   Section      388  fdiv.o(x$fpl$fdiv)
+    _fdiv1                                   0x08002dfd   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    x$fpl$fflt                               0x08002f80   Section       48  fflt_clz.o(x$fpl$fflt)
+    x$fpl$fnaninf                            0x08002fb0   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x0800303c   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$usenofp                            0x08003046   Section        0  usenofp.o(x$fpl$usenofp)
     .data                                    0x20000000   Section       20  system_stm32f10x.o(.data)
     .data                                    0x20000014   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000014   Data          16  stm32f10x_rcc.o(.data)
@@ -711,53 +712,55 @@ Image Symbol Table
     USB_LP_CAN1_RX0_IRQHandler               0x0800233f   Thumb Code     0  startup_stm32f10x_md.o(.text)
     WWDG_IRQHandler                          0x0800233f   Thumb Code     0  startup_stm32f10x_md.o(.text)
     __user_initial_stackheap                 0x08002341   Thumb Code     0  startup_stm32f10x_md.o(.text)
-    main                                     0x08002365   Thumb Code    60  main.o(.text)
-    NMI_Handler                              0x080023a1   Thumb Code     2  stm32f10x_it.o(.text)
-    HardFault_Handler                        0x080023a3   Thumb Code     4  stm32f10x_it.o(.text)
-    MemManage_Handler                        0x080023a7   Thumb Code     4  stm32f10x_it.o(.text)
-    BusFault_Handler                         0x080023ab   Thumb Code     4  stm32f10x_it.o(.text)
-    UsageFault_Handler                       0x080023af   Thumb Code     4  stm32f10x_it.o(.text)
-    SVC_Handler                              0x080023b3   Thumb Code     2  stm32f10x_it.o(.text)
-    DebugMon_Handler                         0x080023b5   Thumb Code     2  stm32f10x_it.o(.text)
-    PendSV_Handler                           0x080023b7   Thumb Code     2  stm32f10x_it.o(.text)
-    SysTick_Handler                          0x080023b9   Thumb Code     2  stm32f10x_it.o(.text)
-    delay_us                                 0x080023bb   Thumb Code    46  delay.o(.text)
-    delay_ms                                 0x080023e9   Thumb Code    26  delay.o(.text)
-    delay_s                                  0x08002403   Thumb Code    26  delay.o(.text)
-    NVIC_Configuration                       0x0800241d   Thumb Code    12  sys.o(.text)
-    RCC_Configuration                        0x08002429   Thumb Code   110  sys.o(.text)
-    Hcsr_Init                                0x08002499   Thumb Code   158  hcsr.o(.text)
-    TIM2_IRQHandler                          0x08002537   Thumb Code    32  hcsr.o(.text)
-    Distance                                 0x08002557   Thumb Code   104  hcsr.o(.text)
-    Wheel_init                               0x080025d5   Thumb Code    40  motr.o(.text)
-    Move_on                                  0x080025fd   Thumb Code    96  motr.o(.text)
-    TIM3_PWM_Init                            0x0800265d   Thumb Code   130  motr.o(.text)
-    TIM4_PWM_Init                            0x080026df   Thumb Code   132  motr.o(.text)
-    uart1_Init                               0x08002779   Thumb Code   146  receive_port.o(.text)
-    USART1_IRQHandler                        0x0800280b   Thumb Code   342  receive_port.o(.text)
-    USART1_IRQHandler_dire                   0x08002961   Thumb Code   342  receive_port.o(.text)
-    USART1_IRQHandler_count                  0x08002ab7   Thumb Code   400  receive_port.o(.text)
-    __use_two_region_memory                  0x08002c5d   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x08002c5f   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x08002c61   Thumb Code     2  heapauxi.o(.text)
-    __user_setup_stackheap                   0x08002c63   Thumb Code    74  sys_stackheap_outer.o(.text)
-    exit                                     0x08002cad   Thumb Code    18  exit.o(.text)
-    __user_libspace                          0x08002cc1   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x08002cc1   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x08002cc1   Thumb Code     0  libspace.o(.text)
-    _sys_exit                                0x08002cc9   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x08002cd5   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x08002cd5   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x08002cd7   Thumb Code     0  indicate_semi.o(.text)
-    __aeabi_fdiv                             0x08002cd9   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    _fdiv                                    0x08002cd9   Thumb Code   384  fdiv.o(x$fpl$fdiv)
-    __aeabi_i2f                              0x08002e5d   Thumb Code     0  fflt_clz.o(x$fpl$fflt)
-    _fflt                                    0x08002e5d   Thumb Code    48  fflt_clz.o(x$fpl$fflt)
-    __fpl_fnaninf                            0x08002e8d   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    __fpl_fretinf                            0x08002f19   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    __I$use$fp                               0x08002f22   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08002f24   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08002f44   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08002365   Thumb Code    92  main.o(.text)
+    NMI_Handler                              0x080023c5   Thumb Code     2  stm32f10x_it.o(.text)
+    HardFault_Handler                        0x080023c7   Thumb Code     4  stm32f10x_it.o(.text)
+    MemManage_Handler                        0x080023cb   Thumb Code     4  stm32f10x_it.o(.text)
+    BusFault_Handler                         0x080023cf   Thumb Code     4  stm32f10x_it.o(.text)
+    UsageFault_Handler                       0x080023d3   Thumb Code     4  stm32f10x_it.o(.text)
+    SVC_Handler                              0x080023d7   Thumb Code     2  stm32f10x_it.o(.text)
+    DebugMon_Handler                         0x080023d9   Thumb Code     2  stm32f10x_it.o(.text)
+    PendSV_Handler                           0x080023db   Thumb Code     2  stm32f10x_it.o(.text)
+    SysTick_Handler                          0x080023dd   Thumb Code     2  stm32f10x_it.o(.text)
+    delay_us                                 0x080023df   Thumb Code    46  delay.o(.text)
+    delay_ms                                 0x0800240d   Thumb Code    26  delay.o(.text)
+    delay_s                                  0x08002427   Thumb Code    26  delay.o(.text)
+    NVIC_Configuration                       0x08002441   Thumb Code    12  sys.o(.text)
+    RCC_Configuration                        0x0800244d   Thumb Code   110  sys.o(.text)
+    Hcsr_Init                                0x080024bd   Thumb Code   158  hcsr.o(.text)
+    TIM2_IRQHandler                          0x0800255b   Thumb Code    32  hcsr.o(.text)
+    Distance                                 0x0800257b   Thumb Code   104  hcsr.o(.text)
+    Wheel_init                               0x080025f9   Thumb Code    40  motr.o(.text)
+    Move_on                                  0x08002621   Thumb Code   108  motr.o(.text)
+    Move_left                                0x0800268d   Thumb Code   108  motr.o(.text)
+    Move_right                               0x080026f9   Thumb Code   108  motr.o(.text)
+    TIM3_PWM_Init                            0x08002765   Thumb Code   130  motr.o(.text)
+    TIM4_PWM_Init                            0x080027e7   Thumb Code   132  motr.o(.text)
+    uart1_Init                               0x08002885   Thumb Code   146  receive_port.o(.text)
+    USART1_IRQHandler                        0x08002917   Thumb Code   354  receive_port.o(.text)
+    USART1_IRQHandler_dire                   0x08002a79   Thumb Code   342  receive_port.o(.text)
+    USART1_IRQHandler_count                  0x08002bcf   Thumb Code   404  receive_port.o(.text)
+    __use_two_region_memory                  0x08002d81   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x08002d83   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x08002d85   Thumb Code     2  heapauxi.o(.text)
+    __user_setup_stackheap                   0x08002d87   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x08002dd1   Thumb Code    18  exit.o(.text)
+    __user_libspace                          0x08002de5   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x08002de5   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x08002de5   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x08002ded   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x08002df9   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x08002df9   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x08002dfb   Thumb Code     0  indicate_semi.o(.text)
+    __aeabi_fdiv                             0x08002dfd   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    _fdiv                                    0x08002dfd   Thumb Code   384  fdiv.o(x$fpl$fdiv)
+    __aeabi_i2f                              0x08002f81   Thumb Code     0  fflt_clz.o(x$fpl$fflt)
+    _fflt                                    0x08002f81   Thumb Code    48  fflt_clz.o(x$fpl$fflt)
+    __fpl_fnaninf                            0x08002fb1   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x0800303d   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    __I$use$fp                               0x08003046   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08003048   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003068   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f10x.o(.data)
     N                                        0x20000028   Data           4  hcsr.o(.data)
@@ -782,9 +785,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002f94, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000030b8, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00002f44, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003068, Max: 0x00010000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -845,30 +848,30 @@ Memory Map of the image
     0x08001508   0x00000e1a   Code   RO          235    .text               stm32f10x_tim.o
     0x08002322   0x00000002   PAD
     0x08002324   0x00000040   Code   RO          286    .text               startup_stm32f10x_md.o
-    0x08002364   0x0000003c   Code   RO          290    .text               main.o
-    0x080023a0   0x0000001a   Code   RO          318    .text               stm32f10x_it.o
-    0x080023ba   0x00000062   Code   RO          333    .text               delay.o
-    0x0800241c   0x0000007a   Code   RO          348    .text               sys.o
-    0x08002496   0x00000002   PAD
-    0x08002498   0x0000013c   Code   RO          378    .text               hcsr.o
-    0x080025d4   0x000001a4   Code   RO          420    .text               motr.o
-    0x08002778   0x000004e4   Code   RO          438    .text               receive_port.o
-    0x08002c5c   0x00000006   Code   RO          461    .text               c_w.l(heapauxi.o)
-    0x08002c62   0x0000004a   Code   RO          496    .text               c_w.l(sys_stackheap_outer.o)
-    0x08002cac   0x00000012   Code   RO          498    .text               c_w.l(exit.o)
-    0x08002cbe   0x00000002   PAD
-    0x08002cc0   0x00000008   Code   RO          506    .text               c_w.l(libspace.o)
-    0x08002cc8   0x0000000c   Code   RO          567    .text               c_w.l(sys_exit.o)
-    0x08002cd4   0x00000002   Code   RO          578    .text               c_w.l(use_no_semi.o)
-    0x08002cd6   0x00000000   Code   RO          580    .text               c_w.l(indicate_semi.o)
-    0x08002cd6   0x00000002   PAD
-    0x08002cd8   0x00000184   Code   RO          466    x$fpl$fdiv          fz_ws.l(fdiv.o)
-    0x08002e5c   0x00000030   Code   RO          470    x$fpl$fflt          fz_ws.l(fflt_clz.o)
-    0x08002e8c   0x0000008c   Code   RO          476    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
-    0x08002f18   0x0000000a   Code   RO          478    x$fpl$fretinf       fz_ws.l(fretinf.o)
-    0x08002f22   0x00000000   Code   RO          480    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x08002f22   0x00000002   PAD
-    0x08002f24   0x00000020   Data   RO          633    Region$$Table       anon$$obj.o
+    0x08002364   0x00000060   Code   RO          290    .text               main.o
+    0x080023c4   0x0000001a   Code   RO          318    .text               stm32f10x_it.o
+    0x080023de   0x00000062   Code   RO          333    .text               delay.o
+    0x08002440   0x0000007a   Code   RO          348    .text               sys.o
+    0x080024ba   0x00000002   PAD
+    0x080024bc   0x0000013c   Code   RO          378    .text               hcsr.o
+    0x080025f8   0x0000028c   Code   RO          420    .text               motr.o
+    0x08002884   0x000004fc   Code   RO          438    .text               receive_port.o
+    0x08002d80   0x00000006   Code   RO          461    .text               c_w.l(heapauxi.o)
+    0x08002d86   0x0000004a   Code   RO          496    .text               c_w.l(sys_stackheap_outer.o)
+    0x08002dd0   0x00000012   Code   RO          498    .text               c_w.l(exit.o)
+    0x08002de2   0x00000002   PAD
+    0x08002de4   0x00000008   Code   RO          506    .text               c_w.l(libspace.o)
+    0x08002dec   0x0000000c   Code   RO          567    .text               c_w.l(sys_exit.o)
+    0x08002df8   0x00000002   Code   RO          578    .text               c_w.l(use_no_semi.o)
+    0x08002dfa   0x00000000   Code   RO          580    .text               c_w.l(indicate_semi.o)
+    0x08002dfa   0x00000002   PAD
+    0x08002dfc   0x00000184   Code   RO          466    x$fpl$fdiv          fz_ws.l(fdiv.o)
+    0x08002f80   0x00000030   Code   RO          470    x$fpl$fflt          fz_ws.l(fflt_clz.o)
+    0x08002fb0   0x0000008c   Code   RO          476    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x0800303c   0x0000000a   Code   RO          478    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x08003046   0x00000000   Code   RO          480    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x08003046   0x00000002   PAD
+    0x08003048   0x00000020   Data   RO          633    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000006f0, Max: 0x00005000, ABSOLUTE)
@@ -898,10 +901,10 @@ Image component sizes
          0          0          0          0          0       4532   core_cm3.o
         98          0          0          0          0        824   delay.o
        316         22          0         12          0       1204   hcsr.o
-        60          0          0          0          0        431   main.o
+        96          4          0          0          0        459   main.o
        220         22          0          0          0     204993   misc.o
-       420         22          0          2          0       1580   motr.o
-      1252        102          0         23         60       2591   receive_port.o
+       652         26          0          2          0       1845   motr.o
+      1276        114          0         23         60       2591   receive_port.o
         64         26        236          0       1536        780   startup_stm32f10x_md.o
       1468         34          0          0          0       8090   stm32f10x_flash.o
        860         38          0          0          0       5621   stm32f10x_gpio.o
@@ -913,7 +916,7 @@ Image component sizes
        480         38          0         20          0      51327   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-     10964        450        268         80       1596     323630   Object Totals
+     11256        470        268         80       1596     323923   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          0          3          0          0   (incl. Padding)
 
@@ -968,15 +971,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     11832        546        268         80       1696     322966   Grand Totals
-     11832        546        268         80       1696     322966   ELF Image Totals
-     11832        546        268         80          0          0   ROM Totals
+     12124        566        268         80       1696     323259   Grand Totals
+     12124        566        268         80       1696     323259   ELF Image Totals
+     12124        566        268         80          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                12100 (  11.82kB)
+    Total RO  Size (Code + RO Data)                12392 (  12.10kB)
     Total RW  Size (RW Data + ZI Data)              1776 (   1.73kB)
-    Total ROM Size (Code + RO Data + RW Data)      12180 (  11.89kB)
+    Total ROM Size (Code + RO Data + RW Data)      12472 (  12.18kB)
 
 ==============================================================================
 

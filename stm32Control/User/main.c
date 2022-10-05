@@ -27,8 +27,19 @@ int main (void){
 
 	while(1){
 		USART1_IRQHandler();
- //   USART1_IRQHandler_dire();		
-		Move_on();
+    USART1_IRQHandler_dire();	
+		if (dire==1)
+		{
+			Move_left();
+		}
+		else if(dire==2)
+		{
+			Move_right();
+		}
+		else
+		{
+			Move_on();
+		}
 	}
 }
 

@@ -16,9 +16,12 @@
 
 void Wheel_init(void);
 void Move_on(void);
+void Move_left(void);
+void Move_right(void);
 void TIM3_PWM_Init(u16 arr,u16 psc);
 void TIM4_PWM_Init(u16 arr,u16 psc);
 s16 myabs(s16 out);
+
 
 
 #endif
