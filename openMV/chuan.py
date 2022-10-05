@@ -18,7 +18,7 @@ def chuan_output(Sig, X):
     elif X < 0:
         Sig = 0
     X=abs(X)
-    data = bytearray([0xb3,0xb3,Sig,X,0x5b,0x5b])
+    data = bytearray([0xb3,0xb3,X,Sig,0x5b,0x5b])
     uart.write(data)
     print("output:",X)
 
