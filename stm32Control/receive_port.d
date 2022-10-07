@@ -30,3 +30,5 @@
 .\receive_port.o: .\Lib\inc\stm32f10x_usart.h
 .\receive_port.o: .\Lib\inc\stm32f10x_wwdg.h
 .\receive_port.o: .\Lib\inc\misc.h
+.\receive_port.o: .\Hardware\OLED\oled.h
+.\receive_port.o: .\Basic\i2c\i2c.h

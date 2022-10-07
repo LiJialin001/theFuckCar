@@ -1,9 +1,10 @@
 #include "receive_port.h"
+#include "oled.h"
 
-u16 data;
+s16 data;
 u16 data1;
 u16 data2;
-u16 out;
+s16 out;
 u16 sig;
 u16 dire;
 u16 flag;
@@ -90,6 +91,7 @@ void USART1_IRQHandler(void)
 									{
 										out = data1*(data-1);
 										sig = (data-1)*(data-1);
+								
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;
@@ -170,7 +172,7 @@ void USART1_IRQHandler_dire(void)
 									if(RxFlag1)
 									{
 										dire = data;
-										flag = data2;
+										flag = data2;									
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;

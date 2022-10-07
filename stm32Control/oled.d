@@ -32,3 +32,4 @@
 .\oled.o: .\Lib\inc\misc.h
 .\oled.o: .\Basic\i2c\i2c.h
 .\oled.o: Hardware\OLED\ASCLL.h
+.\oled.o: .\Hardware\RECEIVE\receive_port.h

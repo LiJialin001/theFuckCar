@@ -3,6 +3,8 @@
 #include "delay.h"
 #include "motr.h"
 #include "receive_port.h"
+#include "ooled.h"
+#include "i2c.h"
 
 
 u8 INT_MARK;//中断标志位
@@ -21,13 +23,44 @@ int main (void){
 	RCC_Configuration(); //时钟设置
 	Wheel_init();
 	uart1_Init();
+	OLED_Init();
+//  OLED0561_Init ();
+//	I2C_Configuration();
+//	
+//	OLED_DISPLAY_8x16_BUFFER(0,"out is :");
+//	OLED_DISPLAY_8x16_BUFFER(2, "sig is :");
+//		OLED_DISPLAY_8x16_BUFFER(6, "dir is :");
 	
 	TIM3_PWM_Init(9999,2); 
 	TIM4_PWM_Init(9999,2); 
 
 	while(1){
 		USART1_IRQHandler();
+		if (out<0){
+			u16 temp;
+			OLED_ShowChar(1,1,'-');
+			temp=-out;
+			OLED_ShowChar(1,2,temp/10+0x30);
+			OLED_ShowChar(1,3,temp%10+0x30);
+		
+		}
+		else{
+			OLED_ShowChar(1,1,out/10+0x30);
+			OLED_ShowChar(1,2,out%10+0x30);
+
+		}
+		OLED_ShowChar(2,1,sig+0x30);
+//		OLED_DISPLAY_8x16(0,8*8,out+0x30);
+//	  OLED_DISPLAY_8x16(2,8*8,sig+0x30);
+		
     USART1_IRQHandler_dire();	
+//		 OLED_DISPLAY_8x16(6,8*8,dire+0x30);
+		OLED_ShowChar(3,1,dire+0x30);
+		
+//		while(dire==0){
+//			Move_on();
+//			USART1_IRQHandler_dire();	
+//		}
 		if (dire==1)
 		{
 			Move_left();

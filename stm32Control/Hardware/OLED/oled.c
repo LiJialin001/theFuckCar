@@ -1,5 +1,6 @@
 #include "oled.h"
 #include "ASCLL.h" //引入字体 ASCII
+#include "receive_port.h"
 
 
 void OLED0561_Init (void){//OLED屏开显示初始化

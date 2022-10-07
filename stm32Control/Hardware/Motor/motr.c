@@ -1,6 +1,6 @@
 #include "motr.h"
 
-u16 out0=3000;
+u16 out0=3300;
 
 void Wheel_init(void) {    //wheel的接口初始化
 	GPIO_InitTypeDef  GPIO_InitStructure; //定义GPIO的初始化枚举结构		
@@ -17,8 +17,8 @@ void Move_on() {
 	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(1)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
-	TIM_SetCompare3(TIM3,out0*sig-out*30); //right  
-	TIM_SetCompare3(TIM4,out0*sig+out*30); //left  
+	TIM_SetCompare3(TIM3,out0*sig-out*50); //right  
+	TIM_SetCompare3(TIM4,out0*sig+out*50); //left  
 }
 
 void Move_left(){

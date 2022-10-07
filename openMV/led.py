@@ -1,9 +1,9 @@
 import sensor, time
 from pyb import LED
 
-led_red = pyb.LED(1)
-led_green = pyb.LED(2)
-led_blue = pyb.LED(3)
+led_red = LED(1)
+led_green = LED(2)
+led_blue = LED(3)
 
 
 def blink_green(isblink):
@@ -17,4 +17,3 @@ def blink_green(isblink):
         led_green.off()
 
 
-    

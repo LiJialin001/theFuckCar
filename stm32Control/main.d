@@ -32,3 +32,5 @@
 .\main.o: .\Basic\delay\delay.h
 .\main.o: .\Hardware\Motor\motr.h
 .\main.o: .\Hardware\RECEIVE\receive_port.h
+.\main.o: .\Hardware\ooled\ooled.h
+.\main.o: .\Basic\i2c\i2c.h

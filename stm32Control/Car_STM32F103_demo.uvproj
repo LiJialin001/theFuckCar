@@ -320,7 +320,7 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED;.\Hardware\Motor;.\Hardware\RECEIVE</IncludePath>
+              <IncludePath>.\CMSIS;.\Lib\inc;.\Lib\src;.\User;.\Startup;.\Basic\delay;.\Basic\sys;.\Hardware\HCSR;.\Basic\i2c;.\Hardware\OLED;.\Hardware\Motor;.\Hardware\RECEIVE;.\Hardware\ooled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -517,6 +517,11 @@
               <FileName>receive_port.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\RECEIVE\receive_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>ooled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\ooled\ooled.c</FilePath>
             </File>
           </Files>
         </Group>

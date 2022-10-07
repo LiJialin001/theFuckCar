@@ -1,4 +1,3 @@
-from re import S
 import sensor, image, time
 from pyb import UART
 import json
