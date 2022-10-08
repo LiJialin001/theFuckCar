@@ -45,8 +45,9 @@ int main (void){
 		
 		}
 		else{
-			OLED_ShowChar(1,1,out/10+0x30);
-			OLED_ShowChar(1,2,out%10+0x30);
+			OLED_ShowChar(1,1,'+');
+			OLED_ShowChar(1,2,out/10+0x30);
+			OLED_ShowChar(1,3,out%10+0x30);
 
 		}
 		OLED_ShowChar(2,1,sig+0x30);
