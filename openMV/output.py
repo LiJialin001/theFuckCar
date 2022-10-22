@@ -1,8 +1,8 @@
 import sensor, image, time
 from pyb import LED
 from pid import PID
-rho_pid = PID(p=0.4, i=0)
-theta_pid = PID(p=0.001, i=0)
+rho_pid = PID(p=2, i=0,d=0.8)
+theta_pid = PID(p=0.01, i=0,d=0)
 
 #sensor.reset()
 #sensor.set_vflip(True)
@@ -13,12 +13,12 @@ theta_pid = PID(p=0.001, i=0)
 #sensor.skip_frames(time = 500)
 clock = time.clock()
 
-THRESHOLD = (16, 38, 27, 50, 13, 42)  
+THRESHOLD = (16, 38, 27, 50, 13, 42)
 
 def output ():
     # LED(1).on()
     # LED(2).on()
-    # LED(3).on() 
+    # LED(3).on()
     #sensor.reset()
     #sensor.set_vflip(True)
     #sensor.set_hmirror(True)
@@ -27,7 +27,7 @@ def output ():
     #sensor.skip_frames(time = 100)
 
     clock.tick()
-    img = sensor.snapshot().binary([THRESHOLD])  
+    img = sensor.snapshot().binary([THRESHOLD])
     line = img.get_regression([(100,100)], robust = True)  # 找线
     if (line):                                             # 如果找到线
         rho_err = abs(line.rho())-img.width()/2            # 计算偏差
@@ -43,8 +43,8 @@ def output ():
             theta_output = theta_pid.get_pid(theta_err,1)
             output = rho_output+theta_output               # 计算最终输出    rho_output+theta_output
         else:
-            output=100   #停车
+            output=0.01
     else:
-        output=200   #原地转
+        output=0.01
     return output
     #print(clock.fps())
