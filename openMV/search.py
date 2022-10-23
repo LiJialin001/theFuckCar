@@ -46,16 +46,17 @@ def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是�
     img = img.to_grayscale()
     y = templates[subject]
     dire = 0     #dire是方向  0是直  1是左  2是右
-    for x in y:
-        template = image.Image(x)
-        r = img.find_template(template, 0.70, step=4, search=SEARCH_EX)
-        if r:
-            img.draw_rectangle(r)
-            print(x)
-            if 0<r[0]<80:
-                dire=1       #left
-            elif 80<r[0]<160:
-                dire=2       #right
+    if x>1:
+        for x in y:
+            template = image.Image(x)
+            r = img.find_template(template, 0.70, step=4, search=SEARCH_EX)
+            if r:
+                img.draw_rectangle(r)
+                print(x)
+                if 0<r[0]<80:
+                    dire=1       #left
+                elif 80<r[0]<160:
+                    dire=2       #right
     return dire
 
 
