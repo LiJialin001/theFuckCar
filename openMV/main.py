@@ -33,7 +33,11 @@ THRESHOLD = (13,100,-18,30,-2,23)
 
 clock = time.clock()    # 初始化时钟
 
+<<<<<<< Updated upstream
 #subject=search.SEARCH0()  # 初始化搜索 （第一次搜索，搜不到不进循环）
+=======
+subject=search.SEARCH0()  # 初始化搜索 （第一次搜索，搜不到不进循环）
+>>>>>>> Stashed changes
 
 flag=0
 dire=0
@@ -41,21 +45,25 @@ out=100   #初始速度
 Sig=1     #初始信号
 c = 0
 
-#以下过程正常直走，遇到路口停车查模版，无模版时直走绿灯亮，有模版时搜索红灯亮
+crossing = 0  #第几个十字路口
 
 while(True):
     dire = 0
+<<<<<<< Updated upstream
     c=crossflag.CROSSFLAG1()
     if c :
         out=output.output()
         chuan.chuan_dir(dire,flag)
         chuan.chuan_output(Sig, out)
+=======
+>>>>>>> Stashed changes
     if crossflag.CROSSFLAG1():   # 是否是交叉口
         out = 0
         chuan.chuan_output(Sig, out)
         led.led_red.on()   # 红灯亮
         led.led_green.on()   # 绿灯亮
         led.led_blue.on()   # 蓝灯亮
+<<<<<<< Updated upstream
         for i in range(1,1000):
             dire=search.SEARCHX(subject,search.tupian())   # 搜索是否有模板图
             print('转向dire = ', dire)
@@ -79,6 +87,35 @@ while(True):
             #chuan.chuan_output(Sig ,out)  # 向前走一些
             #if dire != 0 :     # 如果不是直走则如跳出循环
                 #break
+=======
+
+        crossing += 1  #TODO: 是否会多记
+
+        if crossing == 1:
+            if subject == 1:
+                dire = 1
+                chuan.chuan_dir(dire,flag)
+            elif subject == 2:
+                dire = 2
+                chuan.chuan_dir(dire,flag)
+        elif crossing != 0:
+            while(True):
+                led.led_red.off()   # 红灯亮
+                led.led_green.off()   # 绿灯亮
+                led.led_blue.off()   # 蓝灯亮
+                out=0
+                Sig=1
+                chuan.chuan_output(Sig,out)
+                dire=search.SEARCHX(subject,templates)   # 搜索是否有模板图
+                if dire != 0 :     # 如果不是直走则如跳出循环
+                    led.led_blue.on()   # 蓝灯亮
+                    chuan.chuan_dir(dire,flag)
+                    print('转向dire = ', dire)
+                    break
+
+
+
+>>>>>>> Stashed changes
         #if dire==0:     # 如果是直走(没有检测到模板图)    亮红灯
             #led.led_green.off()   # 绿灯灭
             #chuan.chuan_dir(dire,flag)   # 传输方向

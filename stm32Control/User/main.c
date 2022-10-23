@@ -53,8 +53,6 @@ int main (void){
 		OLED_ShowChar(2,1,sig+0x30);
 //		OLED_DISPLAY_8x16(0,8*8,out+0x30);
 //	  OLED_DISPLAY_8x16(2,8*8,sig+0x30);
-		
-    USART1_IRQHandler_dire();	
 //		 OLED_DISPLAY_8x16(6,8*8,dire+0x30);
 		OLED_ShowChar(3,1,dire+0x30);
 		
@@ -69,10 +67,12 @@ int main (void){
 		else if(dire==2)
 		{
 			Move_right();
+			delay_ms(300);
 		}
 		else
 		{
 			Move_on();
+			delay_ms(300);
 		}
 	}
 }

@@ -43,25 +43,25 @@ templates8 = ["/8.pgm","/8_1.pgm","/8_2.pgm","/8_3.pgm","/8_4.pgm","/8_5.pgm","/
 #加载模板图片
 
 clock = time.clock()
-uart = UART(3,115200)   #定义串口3变量
-uart.init(115200, bits=8, parity=None, stop=1) # init with given parameters
+# uart = UART(3,115200)   #定义串口3变量
+# uart.init(115200, bits=8, parity=None, stop=1) # init with given parameters
 
-def outuart(x,num):
-    global uart
-    #frame=[0x2C,18,cx%0xff,int(cx/0xff),cy%0xff,int(cy/0xff),0x5B];
-    #data = bytearray(frame)
-    data = ustruct.pack("<bbhhhhb",      #格式为俩个字符俩个短整型(2字节)
-                   0x2C,                      #帧头1
-                   0x12,                      #帧头2
-                   int(x), # up sample by 4   #数据1
-                   int(num), # up sample by 4    #数据2
-                   int(0), # up sample by 4    #数据1
-                   int(0), # up sample by 4    #数据2
-                   0x5B)
-    for x in range(5):
-        uart.write(data)#必须要传入一个字节数组
-        time.sleep_ms(1)
-        print(num)
+# def outuart(x,num):
+#     global uart
+#     #frame=[0x2C,18,cx%0xff,int(cx/0xff),cy%0xff,int(cy/0xff),0x5B];
+#     #data = bytearray(frame)
+#     data = ustruct.pack("<bbhhhhb",      #格式为俩个字符俩个短整型(2字节)
+#                    0x2C,                      #帧头1
+#                    0x12,                      #帧头2
+#                    int(x), # up sample by 4   #数据1
+#                    int(num), # up sample by 4    #数据2
+#                    int(0), # up sample by 4    #数据1
+#                    int(0), # up sample by 4    #数据2
+#                    0x5B)
+#     for x in range(5):
+#         uart.write(data)#必须要传入一个字节数组
+#         time.sleep_ms(1)
+#         print(num)
 
 # Run template matching
 while (True):
@@ -85,7 +85,7 @@ while (True):
         #img.draw_rectangle(r)
         print('1')
         num=1
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -102,7 +102,7 @@ while (True):
         #img.draw_rectangle(r1_3)
         print('2')
         num=2
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -119,7 +119,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('3')
         num=3
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -136,7 +136,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('4')
         num=4
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -152,7 +152,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('5')
         num=5
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -168,7 +168,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('6')
         num=6
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -184,7 +184,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('7')
         num=7
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -200,7 +200,7 @@ while (True):
         #img.draw_rectangle(r1_1)
         print('8')
         num=8
-        outuart(0,num)
+        # outuart(0,num)
         for x in range(5):
             LED(1).on()
             LED(2).off()
@@ -216,10 +216,10 @@ while (True):
         while(True):
             clock.tick()
             img = sensor.snapshot()
-            if num==1:
-                outuart(0,num)
-            if num==2:
-                outuart(0,num)
+            # if num==1:
+            #     outuart(0,num)
+            # if num==2:
+            #     outuart(0,num)
 
             if num==3:
                 r3_0 = img.find_template(image.Image(templates3[0]), 0.70, step=5, search=SEARCH_EX)
@@ -227,7 +227,7 @@ while (True):
                     print(r3_0)
                     #img.draw_rectangle(r1_1)
                     print('3')
-                    outuart(r3_0[0],num)
+                    # outuart(r3_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -242,7 +242,7 @@ while (True):
                     print(r3_1)
                     #img.draw_rectangle(r1_1)
                     print('3')
-                    outuart(r3_1[0],num)
+                    # outuart(r3_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -257,7 +257,7 @@ while (True):
                     print(r3_2)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_2[0],num)
+                    # outuart(r3_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -272,7 +272,7 @@ while (True):
                     print(r3_3)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_3[0],num)
+                    # outuart(r3_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -287,7 +287,7 @@ while (True):
                     print(r3_4)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_4[0],num)
+                    # outuart(r3_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -302,7 +302,7 @@ while (True):
                     print(r3_5)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_5[0],num)
+                    # outuart(r3_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -317,7 +317,7 @@ while (True):
                     print(r3_6)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_6[0],num)
+                    # outuart(r3_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -332,7 +332,7 @@ while (True):
                     print(r3_7)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_7[0],num)
+                    # outuart(r3_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -347,7 +347,7 @@ while (True):
                     print(r3_8)
                     #img.draw_rectangle(r1_2)
                     print('3')
-                    outuart(r3_8[0],num)
+                    # outuart(r3_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -363,7 +363,7 @@ while (True):
                     print(r4_0)
                     #img.draw_rectangle(r1_1)
                     print('4')
-                    outuart(r4_0[0],num)
+                    # outuart(r4_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -378,7 +378,7 @@ while (True):
                     print(r4_1)
                     #img.draw_rectangle(r1_1)
                     print('4')
-                    outuart(r4_1[0],num)
+                    # outuart(r4_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -393,7 +393,7 @@ while (True):
                     print(r4_2)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_2[0],num)
+                    # outuart(r4_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -408,7 +408,7 @@ while (True):
                     print(r4_3)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_3[0],num)
+                    # outuart(r4_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -423,7 +423,7 @@ while (True):
                     print(r4_4)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_4[0],num)
+                    # outuart(r4_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -438,7 +438,7 @@ while (True):
                     print(r4_5)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_5[0],num)
+                    # outuart(r4_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -453,7 +453,7 @@ while (True):
                     print(r4_6)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_6[0],num)
+                    # outuart(r4_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -468,7 +468,7 @@ while (True):
                     print(r4_7)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_7[0],num)
+                    # outuart(r4_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -483,7 +483,7 @@ while (True):
                     print(r4_8)
                     #img.draw_rectangle(r1_2)
                     print('4')
-                    outuart(r4_8[0],num)
+                    # outuart(r4_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -499,7 +499,7 @@ while (True):
                     print(r5_0)
                     #img.draw_rectangle(r1_1)
                     print('5')
-                    outuart(r5_0[0],num)
+                    # outuart(r5_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -514,7 +514,7 @@ while (True):
                     print(r5_1)
                     #img.draw_rectangle(r1_1)
                     print('5')
-                    outuart(r5_1[0],num)
+                    # outuart(r5_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -529,7 +529,7 @@ while (True):
                     print(r5_2)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_2[0],num)
+                    # outuart(r5_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -544,7 +544,7 @@ while (True):
                     print(r5_3)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_3[0],num)
+                    # outuart(r5_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -559,7 +559,7 @@ while (True):
                     print(r5_4)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_4[0],num)
+                    # outuart(r5_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -574,7 +574,7 @@ while (True):
                     print(r5_5)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_5[0],num)
+                    # outuart(r5_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -589,7 +589,7 @@ while (True):
                     print(r5_6)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_6[0],num)
+                    # outuart(r5_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -604,7 +604,7 @@ while (True):
                     print(r5_7)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_7[0],num)
+                    # outuart(r5_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -619,7 +619,7 @@ while (True):
                     print(r5_8)
                     #img.draw_rectangle(r1_2)
                     print('5')
-                    outuart(r5_8[0],num)
+                    # outuart(r5_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -635,7 +635,7 @@ while (True):
                     print(r6_0)
                     #img.draw_rectangle(r1_1)
                     print('6')
-                    outuart(r6_0[0],num)
+                    # outuart(r6_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -650,7 +650,7 @@ while (True):
                     print(r6_1)
                     #img.draw_rectangle(r1_1)
                     print('6')
-                    outuart(r6_1[0],num)
+                    # outuart(r6_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -665,7 +665,7 @@ while (True):
                     print(r6_2)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_2[0],num)
+                    # outuart(r6_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -680,7 +680,7 @@ while (True):
                     print(r6_3)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_3[0],num)
+                    # outuart(r6_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -695,7 +695,7 @@ while (True):
                     print(r6_4)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_4[0],num)
+                    # outuart(r6_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -710,7 +710,7 @@ while (True):
                     print(r6_5)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_5[0],num)
+                    # outuart(r6_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -725,7 +725,7 @@ while (True):
                     print(r6_6)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_6[0],num)
+                    # outuart(r6_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -740,7 +740,7 @@ while (True):
                     print(r6_7)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_7[0],num)
+                    # outuart(r6_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -755,7 +755,7 @@ while (True):
                     print(r6_8)
                     #img.draw_rectangle(r1_2)
                     print('6')
-                    outuart(r6_8[0],num)
+                    # outuart(r6_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -771,7 +771,7 @@ while (True):
                     print(r7_0)
                     #img.draw_rectangle(r1_1)
                     print('7')
-                    outuart(r7_0[0],num)
+                    # outuart(r7_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -786,7 +786,7 @@ while (True):
                     print(r7_1)
                     #img.draw_rectangle(r1_1)
                     print('7')
-                    outuart(r7_1[0],num)
+                    # outuart(r7_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -801,7 +801,7 @@ while (True):
                     print(r7_2)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_2[0],num)
+                    # outuart(r7_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -816,7 +816,7 @@ while (True):
                     print(r7_3)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_3[0],num)
+                    # outuart(r7_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -831,7 +831,7 @@ while (True):
                     print(r7_4)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_4[0],num)
+                    # outuart(r7_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -846,7 +846,7 @@ while (True):
                     print(r7_5)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_5[0],num)
+                    # outuart(r7_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -861,7 +861,7 @@ while (True):
                     print(r7_6)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_6[0],num)
+                    # outuart(r7_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -876,7 +876,7 @@ while (True):
                     print(r7_7)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_7[0],num)
+                    # outuart(r7_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -891,7 +891,7 @@ while (True):
                     print(r7_8)
                     #img.draw_rectangle(r1_2)
                     print('7')
-                    outuart(r7_8[0],num)
+                    # outuart(r7_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -907,7 +907,7 @@ while (True):
                     print(r8_0)
                     #img.draw_rectangle(r1_1)
                     print('8')
-                    outuart(r8_0[0],num)
+                    # outuart(r8_0[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -922,7 +922,7 @@ while (True):
                     print(r8_1)
                     #img.draw_rectangle(r1_1)
                     print('8')
-                    outuart(r8_1[0],num)
+                    # outuart(r8_1[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -937,7 +937,7 @@ while (True):
                     print(r8_2)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_2[0],num)
+                    # outuart(r8_2[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -952,7 +952,7 @@ while (True):
                     print(r8_3)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_3[0],num)
+                    # outuart(r8_3[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -967,7 +967,7 @@ while (True):
                     print(r8_4)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_4[0],num)
+                    # outuart(r8_4[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -982,7 +982,7 @@ while (True):
                     print(r8_5)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_5[0],num)
+                    # outuart(r8_5[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -997,7 +997,7 @@ while (True):
                     print(r8_6)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_6[0],num)
+                    # outuart(r8_6[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -1012,7 +1012,7 @@ while (True):
                     print(r8_7)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_7[0],num)
+                    # outuart(r8_7[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()
@@ -1027,7 +1027,7 @@ while (True):
                     print(r8_8)
                     #img.draw_rectangle(r1_2)
                     print('8')
-                    outuart(r8_8[0],num)
+                    # outuart(r8_8[0],num)
                     for x in range(5):
                         LED(1).on()
                         LED(2).off()

@@ -78,7 +78,8 @@ void USART1_IRQHandler(void)
 						RxState=3;
 						RxFlag1=1;
 						data=RxBuffer1[RxCounter1-2];	
-            data1=RxBuffer1[RxCounter1-3];						
+            data1=RxBuffer1[RxCounter1-3];		
+            data2=RxBuffer1[RxCounter1-4];							
 					}
 				}
 		
@@ -91,7 +92,7 @@ void USART1_IRQHandler(void)
 									{
 										out = data1*(data-1);
 										sig = (data-1)*(data-1);
-								
+								    dire = data2;
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;
@@ -159,8 +160,7 @@ void USART1_IRQHandler_dire(void)
 					{
 						RxState=3;
 						RxFlag1=1;
-						data=RxBuffer1[RxCounter1-3];		
-						data2 = RxBuffer1[RxCounter1-2];	
+						data=RxBuffer1[RxCounter1-2];		
 					}
 				}
 		
@@ -172,7 +172,6 @@ void USART1_IRQHandler_dire(void)
 									if(RxFlag1)
 									{
 										dire = data;
-										flag = data2;									
 									}
 									RxFlag1 = 0;
 									RxCounter1 = 0;

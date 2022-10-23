@@ -1,8 +1,13 @@
 import sensor, image, time
 from pyb import LED
 from pid import PID
+<<<<<<< Updated upstream
 rho_pid = PID(p=2, i=0,d=0.8)
 theta_pid = PID(p=0.01, i=0,d=0)
+=======
+rho_pid = PID(p=1.5)
+theta_pid = PID(p=0.01)
+>>>>>>> Stashed changes
 
 #sensor.reset()
 #sensor.set_vflip(True)
@@ -13,7 +18,11 @@ theta_pid = PID(p=0.01, i=0,d=0)
 #sensor.skip_frames(time = 500)
 clock = time.clock()
 
+<<<<<<< Updated upstream
 THRESHOLD = (16, 38, 27, 50, 13, 42)
+=======
+THRESHOLD = (30, 50, 27, 70, 0, 45)
+>>>>>>> Stashed changes
 
 def output ():
     # LED(1).on()
@@ -33,6 +42,9 @@ def output ():
         rho_err = abs(line.rho())-img.width()/2            # 计算偏差
         if line.theta()>90:                                # 如果线夹角大于90度
             theta_err = line.theta()-180                   # 计算误差角度
+        elif line.theta()>60:
+            rho_err = 0
+            theta_err = 0
         else:
             theta_err = line.theta()                       # 计算误差角度
         img.draw_line(line.line(), color = 127)            # 在图像上画出线
