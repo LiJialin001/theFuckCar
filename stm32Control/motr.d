@@ -31,3 +31,4 @@
 .\motr.o: .\Lib\inc\stm32f10x_wwdg.h
 .\motr.o: .\Lib\inc\misc.h
 .\motr.o: .\Hardware\RECEIVE\receive_port.h
+.\motr.o: .\Basic\delay\delay.h

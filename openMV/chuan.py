@@ -20,7 +20,6 @@ def chuan_output(Sig, X, d):
     d=int(d)
     data = bytearray([0xb3,0xb3,d,X,Sig,0x5b,0x5b])
     uart.write(data)
-    print("dir:",d)
     if X != 0:
         print("output:",X,Sig)
 
@@ -29,7 +28,6 @@ def chuan_dir(d):   #d为方向
     d=int(d)
     data = bytearray([0x77,0x77,d,0x4b,0x4b])
     uart.write(data)
-    print("dir:",d)
     #print('dir_data:', data)
 
 

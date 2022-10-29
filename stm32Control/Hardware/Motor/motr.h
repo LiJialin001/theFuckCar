@@ -4,6 +4,7 @@
 #include "sys.h"
 #include "stm32f10x.h"
 #include "receive_port.h"
+#include "delay.h"
 
 #define WHEEL GPIOB
 #define Wheel_1 GPIO_Pin_0

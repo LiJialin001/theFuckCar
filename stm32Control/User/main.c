@@ -63,16 +63,16 @@ int main (void){
 		if (dire==1)
 		{
 			Move_left();
+	//		delay_ms(120);
 		}
 		else if(dire==2)
 		{
 			Move_right();
-			delay_ms(300);
+		//	delay_ms(120);
 		}
 		else
 		{
 			Move_on();
-			delay_ms(300);
 		}
 	}
 }

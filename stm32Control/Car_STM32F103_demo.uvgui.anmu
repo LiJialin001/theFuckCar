@@ -75,18 +75,18 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-32000</xPos>
-        <yPos>-32000</yPos>
+        <xPos>-1</xPos>
+        <yPos>-1</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>0</Top>
-        <Left>283</Left>
-        <Right>1435</Right>
-        <Bottom>623</Bottom>
+        <Top>119</Top>
+        <Left>571</Left>
+        <Right>1723</Right>
+        <Bottom>742</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
@@ -2588,36 +2588,36 @@
       <ActiveTab>2</ActiveTab>
       <Doc>
         <Name>.\Hardware\Motor\motr.h</Name>
-        <ColumnNumber>32</ColumnNumber>
+        <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>14</CurrentLine>
+        <CurrentLine>15</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\Hardware\RECEIVE\receive_port.c</Name>
-        <ColumnNumber>32</ColumnNumber>
-        <TopLine>76</TopLine>
-        <CurrentLine>97</CurrentLine>
+        <ColumnNumber>16</ColumnNumber>
+        <TopLine>147</TopLine>
+        <CurrentLine>175</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\Hardware\Motor\motr.c</Name>
-        <ColumnNumber>0</ColumnNumber>
+        <ColumnNumber>11</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>4</CurrentLine>
+        <CurrentLine>3</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\User\main.c</Name>
-        <ColumnNumber>29</ColumnNumber>
-        <TopLine>37</TopLine>
-        <CurrentLine>59</CurrentLine>
+        <ColumnNumber>1</ColumnNumber>
+        <TopLine>43</TopLine>
+        <CurrentLine>61</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -2642,7 +2642,7 @@
       </Doc>
       <Doc>
         <Name>Hardware\ooled\ooled_font.h</Name>
-        <ColumnNumber>19</ColumnNumber>
+        <ColumnNumber>21</ColumnNumber>
         <TopLine>273</TopLine>
         <CurrentLine>285</CurrentLine>
         <Folding>0</Folding>
