@@ -28,7 +28,6 @@ Sig=1       # 初始信号 （Sig-1）判断巡线偏离
 count = subject  # 检测到的数字（n-1）
 chuan.chuan_output(Sig, out, dire, count)
 step = 0  # 0直线 1 十字路口 2 返回
-times = 0 # 搜索模板次数，小于5继续搜索
 time.sleep_ms(500)
 
 isGoHome = False

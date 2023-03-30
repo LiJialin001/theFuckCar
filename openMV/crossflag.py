@@ -19,7 +19,7 @@ def CROSSFLAG1 ():  # 判断是否为十字路口
 
     statistics_left = img.get_statistics(roi = Left_ROI)
     statistics_right = img.get_statistics(roi = Right_ROI)
-    if (statistics_left.l_min()<40 or statistics_right.l_min()<40) and (statistics_left.a_max()>40 or statistics_right.a_max()>40):
+    if (statistics_left.l_min()<40 and statistics_left.a_max()>40) or ( statistics_right.l_min()<40 and statistics_right.a_max()>40):
         print("stop")
         return 1
     else:
