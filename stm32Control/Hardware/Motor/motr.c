@@ -28,7 +28,7 @@ void Move_right(){
 	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(0)); 
 	TIM_SetCompare3(TIM3,3000); 
 	TIM_SetCompare3(TIM4,0); 
-  delay_ms(920);
+    delay_ms(920);
 	TIM_SetCompare3(TIM3,0); 
 	TIM_SetCompare3(TIM4,0); 
 	return ;
@@ -50,7 +50,10 @@ void Move_left(){
 }
 
 void Move_back(){
-  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1));  
+    Move_on();
+    delay_ms(300)
+    
+    GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1));
 	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
