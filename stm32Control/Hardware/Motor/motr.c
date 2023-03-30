@@ -17,33 +17,51 @@ void Move_on() {
 	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(1)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
 	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
-	TIM_SetCompare3(TIM3,out0*sig-out*5); //right  
-	TIM_SetCompare3(TIM4,out0*sig+out*5); //left  
-}
-
-void Move_left(){
-  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(0));   //right
-	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(1)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(1)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(0)); 
-	TIM_SetCompare3(TIM3,4500); //right  r
-	TIM_SetCompare3(TIM4,0); //left  l
- // delay_ms(150);
-
+	TIM_SetCompare3(TIM3,out0*sig+out*10); //right  
+	TIM_SetCompare3(TIM4,out0*sig-out*10); //left  
 }
 
 void Move_right(){
-  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1));   //right
-	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
-	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
-	TIM_SetCompare3(TIM3,0); //right  r
-	TIM_SetCompare3(TIM4,4500); //left  l
-	 //delay_ms(150);
+  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(0));   
+	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(1)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(1)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(0)); 
+	TIM_SetCompare3(TIM3,3000); 
+	TIM_SetCompare3(TIM4,0); 
+  delay_ms(920);
+	TIM_SetCompare3(TIM3,0); 
+	TIM_SetCompare3(TIM4,0); 
+	return ;
 
 }
 
+void Move_left(){
+  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1)); 
+	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
+	TIM_SetCompare3(TIM3,0); 
+	TIM_SetCompare3(TIM4,3000); 
+	delay_ms(920);
+	TIM_SetCompare3(TIM3,0); 
+	TIM_SetCompare3(TIM4,0); 
+	return ;
 
+}
+
+void Move_back(){
+  GPIO_WriteBit(WHEEL, Wheel_1_on, (BitAction)(1));  
+	GPIO_WriteBit(WHEEL, Wheel_1_back, (BitAction)(0)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_on, (BitAction)(0)); 
+	GPIO_WriteBit(WHEEL, Wheel_2_back, (BitAction)(1)); 
+	TIM_SetCompare3(TIM3,3000); //right  r
+	TIM_SetCompare3(TIM4,3000); //left  l
+	delay_ms(800);
+	TIM_SetCompare3(TIM3,0); //right  r
+	TIM_SetCompare3(TIM4,0); //left  l
+	return ;
+
+}
 void TIM3_PWM_Init(u16 arr,u16 psc){  //TIM3 PWM初始化 arr重装载值 psc预分频系数
     GPIO_InitTypeDef     GPIO_InitStrue;
     TIM_OCInitTypeDef     TIM_OCInitStrue;

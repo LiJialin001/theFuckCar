@@ -15,6 +15,10 @@ extern s16 out;
 extern u16 sig;
 extern u16 dire;
 extern u16 flag;
+extern u16 data3;
+extern u16 data4;
+extern u16 crossing;
+extern u16 count;
 
 
 void uart1_Init(void);

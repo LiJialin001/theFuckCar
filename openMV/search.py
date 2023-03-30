@@ -30,11 +30,11 @@ def SEARCH0 ():
         #print(clock.fps())
 
 def tupian ():
-    templates1 = ["/1_1.pgm", "/1_2.pgm", "/1_3.pgm"]
-    templates2 = ["/2_1.pgm", "/2_2.pgm", "/2_3.pgm"]
+    templates1 = ["/1.pgm"]
+    templates2 = ["/2.pgm"]
     templates3 = ["/3_1.pgm", "/3_2.pgm", "/3_3.pgm", "/3hg.pgm", "/3l.pgm", "/3r.pgm"]
     templates4 = ["/4_1.pgm", "/4_2.pgm", "/4_3.pgm", "/4hg.pgm", "/4l.pgm", "/4r.pgm"]
-    templates5 = ["/5_1.pgm", "/5_2.pgm", "/5_3.pgm", "/5hg.pgm", "/5l.pgm", "/5r.pgm", "/5-h1.pgm"]
+    templates5 = ["/5_1.pgm", "/5_2.pgm", "/5_3.pgm", "/5hg.pgm", "/5l.pgm", "/5r.pgm"]
     templates6 = ["/6_1.pgm", "/6_2.pgm", "/6_3.pgm", "/6hg.pgm", "/6l.pgm", "/6r.pgm"]
     templates7 = ["/7_1.pgm", "/7_2.pgm", "/7_3.pgm", "/7hg.pgm", "/7l.pgm", "/7r.pgm"]
     templates8 = ["/8_1.pgm", "/8_2.pgm", "/8_3.pgm", "/8hg.pgm", "/8l.pgm", "/8r.pgm"]
@@ -44,19 +44,19 @@ def tupian ():
 def SEARCHX (subject,templates):   #subject是要匹配的图像，templates是模板
     img = sensor.snapshot()
     img = img.to_grayscale()
+    print('subject:',subject)
     y = templates[subject]
     dire = 0     #dire是方向  0是直  1是左  2是右
-    if subject>1:
-        for x in y:
-            template = image.Image(x)
-            r = img.find_template(template, 0.70, step=4, search=SEARCH_EX)
-            if r:
-                img.draw_rectangle(r)
-                print(x)
-                if 0<r[0]<50:
-                    dire=1       #left
-                elif 50<r[0]<160:
-                    dire=2       #right
+    for x in y:
+        template = image.Image(x)
+        r = img.find_template(template, 0.70, step=4, search=SEARCH_EX)
+        if r:
+            img.draw_rectangle(r)
+            print(x)
+            if 0<r[0]<50:
+                dire=1       #left
+            elif 50<r[0]<160:
+                dire=2       #right
     print('searchx_dire:', dire)
     return dire
 

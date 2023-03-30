@@ -14,6 +14,10 @@ vu16 ADC_DMA_IN[2];
 void TIM3_PWM_Init(u16 arr,u16 psc);
 void TIM4_PWM_Init(u16 arr,u16 psc);
 
+u16 crossing_count; //十字路口个数
+u16 turn_left_count;//左转个数
+u16 turn_right_count;//右转个数
+
 
 
 int main (void){
@@ -24,15 +28,11 @@ int main (void){
 	Wheel_init();
 	uart1_Init();
 	OLED_Init();
-//  OLED0561_Init ();
-//	I2C_Configuration();
-//	
-//	OLED_DISPLAY_8x16_BUFFER(0,"out is :");
-//	OLED_DISPLAY_8x16_BUFFER(2, "sig is :");
-//		OLED_DISPLAY_8x16_BUFFER(6, "dir is :");
-	
 	TIM3_PWM_Init(9999,2); 
 	TIM4_PWM_Init(9999,2); 
+	crossing_count = 0;
+	turn_left_count = 0;
+	turn_right_count = 0;
 
 	while(1){
 		USART1_IRQHandler();
@@ -42,33 +42,26 @@ int main (void){
 			temp=-out;
 			OLED_ShowChar(1,2,temp/10+0x30);
 			OLED_ShowChar(1,3,temp%10+0x30);
-		
 		}
 		else{
 			OLED_ShowChar(1,1,'+');
 			OLED_ShowChar(1,2,out/10+0x30);
 			OLED_ShowChar(1,3,out%10+0x30);
-
 		}
 		OLED_ShowChar(2,1,sig+0x30);
-//		OLED_DISPLAY_8x16(0,8*8,out+0x30);
-//	  OLED_DISPLAY_8x16(2,8*8,sig+0x30);
-//		 OLED_DISPLAY_8x16(6,8*8,dire+0x30);
 		OLED_ShowChar(3,1,dire+0x30);
-		
-//		while(dire==0){
-//			Move_on();
-//			USART1_IRQHandler_dire();	
-//		}
-		if (dire==1)
+		if(dire == 0){
+			Move_on();
+		}
+		if (dire == 1)
 		{
 			Move_left();
-	//		delay_ms(120);
 		}
-		else if(dire==2)
+		else if(dire == 2)
 		{
 			Move_right();
-		//	delay_ms(120);
+		}else if(dire == 3){
+			Move_back();
 		}
 		else
 		{

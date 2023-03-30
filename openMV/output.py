@@ -4,27 +4,11 @@ from pid import PID
 rho_pid = PID(p=1.5)
 theta_pid = PID(p=0.01)
 
-#sensor.reset()
-#sensor.set_vflip(True)
-#sensor.set_hmirror(True)
-#sensor.set_pixformat(sensor.RGB565)
-#sensor.set_framesize(sensor.QQVGA)
-##sensor.set_windowing([0,20,80,40])
-#sensor.skip_frames(time = 500)
 clock = time.clock()
 
 THRESHOLD = (30, 50, 27, 70, 0, 45)
 
 def output ():
-    # LED(1).on()
-    # LED(2).on()
-    # LED(3).on()
-    #sensor.reset()
-    #sensor.set_vflip(True)
-    #sensor.set_hmirror(True)
-    #sensor.set_pixformat(sensor.RGB565)
-    #sensor.set_framesize(sensor.QQVGA)
-    #sensor.skip_frames(time = 100)
 
     clock.tick()
     img = sensor.snapshot().binary([THRESHOLD])
@@ -33,7 +17,7 @@ def output ():
         rho_err = abs(line.rho())-img.width()/2            # 计算偏差
         if line.theta()>90:                                # 如果线夹角大于90度
             theta_err = line.theta()-180                   # 计算误差角度
-        elif line.theta()>60:
+        elif line.theta()>45:
             rho_err = 0
             theta_err = 0
         else:
