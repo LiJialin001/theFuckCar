@@ -73,6 +73,7 @@ while(True):
         print('back')
         time.sleep_ms(1500)
     elif step == 3:          # 返回的转向口
+        time.sleep_ms(1000)
         if turnIndex > 0:
             turnIndex -= 1
         if TurnMatrix[count][turnIndex] == 1:
@@ -86,6 +87,7 @@ while(True):
         step = 0
     else:                   # 停车结束运行
         out = 0
+        dire = 0
         chuan.chuan_output(Sig,out,dire,count)
 
 
