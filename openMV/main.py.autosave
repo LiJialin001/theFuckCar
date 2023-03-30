@@ -51,12 +51,12 @@ while(True):
                 step = 3
             else:
                 step = 1
-        #elif crossflag.CROSSFLAG2():    # 是否返回路口
-            #time.sleep_ms(430)
-            #out = 0
-            #Sig = 1
-            #chuan.chuan_output(Sig,out,dire,count)
-            #step = 2
+        elif crossflag.CROSSFLAG2():    # 是否返回路口
+            time.sleep_ms(430)
+            out = 0
+            Sig = 1
+            chuan.chuan_output(Sig,out,dire,count)
+            step = 2
     elif step == 1:                          # 前进十字路口模式，要转的方向向传给32，并等待至出十字路口
         time.sleep_ms(1000)
         dire = TurnMatrix[count][turnIndex]
